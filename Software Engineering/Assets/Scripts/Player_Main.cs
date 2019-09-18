@@ -24,11 +24,13 @@ public class Player_Main : MonoBehaviour {
         float move = movex * pSpeed;
         rb.velocity = new Vector2(move, rb.velocity.y);
 
-        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) {
-            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-        }
-
         checkForGround();
+
+        if (onGround) {
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) {
+                rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            }
+        }
 	}
 
     void checkForGround() {
